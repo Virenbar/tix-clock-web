@@ -1,0 +1,31 @@
+{
+  "name": "@virenbar/tix-clock-web",
+  "version": "1.0.0",
+  "description": "Web version of TiX Clock",
+  "author": "Virenbar",
+  "license": "MIT",
+  "repository": "Virenbar/tix-clock-web",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "@artmizu/yandex-metrika-nuxt": "^1.0.4",
+    "@nuxt/eslint": "^0.3.13",
+    "@types/bootstrap": "^5.2.10",
+    "eslint": "^9.5.0",
+    "nuxt": "^3.12.2",
+    "sass": "^1.77.6",
+    "sass-loader": "^14.2.1",
+    "typescript": "^5.5.2",
+    "webpack": "^5.92.1"
+  },
+  "type": "module",
+  "private": true
+}
