@@ -1,6 +1,6 @@
 interface BlockState {
   digit: number
-  pixels: boolean[]
+  pattern: boolean[]
   color: string
 }
 

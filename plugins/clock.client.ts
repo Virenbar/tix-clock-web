@@ -26,7 +26,7 @@ function createPattern(max: number, digit: number): boolean[] {
 }
 
 export default defineNuxtPlugin(() => {
-  const wait = useState("wait", () => def.updateInterval);
+  const interval = useState("interval", () => def.updateInterval);
   const hourL = useState<BlockState>();
   const hourR = useState<BlockState>();
   const minuteL = useState<BlockState>();
@@ -43,22 +43,22 @@ export default defineNuxtPlugin(() => {
     const ml = (minutes - mr) / 10;
 
     hourL.value = {
-      pixels: createPattern(3, hl),
+      pattern: createPattern(3, hl),
       color: def.hourLeftColor,
       digit: hl
     };
     hourR.value = {
-      pixels: createPattern(9, hr),
+      pattern: createPattern(9, hr),
       color: def.hourRightColor,
       digit: hr
     };
     minuteL.value = {
-      pixels: createPattern(6, ml),
+      pattern: createPattern(6, ml),
       color: def.minuteLeftColor,
       digit: ml
     };
     minuteR.value = {
-      pixels: createPattern(9, mr),
+      pattern: createPattern(9, mr),
       color: def.minuteRightColor,
       digit: mr
     };
@@ -66,7 +66,7 @@ export default defineNuxtPlugin(() => {
 
   async function loop() {
     for (; ;) {
-      await sleep(wait.value);
+      await sleep(interval.value);
       updateState();
     }
   }

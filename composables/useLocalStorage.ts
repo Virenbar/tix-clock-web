@@ -18,8 +18,5 @@ export default function () {
 }
 
 interface Storage {
-  settings: {
-    interval: number
-    color: string
-  }
+  settings: Settings
 }

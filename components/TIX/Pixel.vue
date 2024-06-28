@@ -11,6 +11,7 @@ const color = computed(() => props.lit ? props.colorOn : props.colorOff);
 </template>
 <style scoped>
 .pixel {
+  transition: all .5s;
   margin: .25em;
   width: v-bind("$clock.pixelSize + 'em'");
   height: v-bind("$clock.pixelSize + 'em'");
