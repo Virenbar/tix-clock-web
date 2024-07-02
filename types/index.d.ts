@@ -4,7 +4,7 @@ interface BlockState {
   color: string
 }
 
-interface Settings {
+interface Config {
   pixelSize: number
   updateInterval: number
   hourLeftColor: string

@@ -1,13 +1,20 @@
 import { sleep } from "~/utils";
 
-const def: Settings = {
+const defaultConfig: Config = {
   updateInterval: 5000,
-  pixelSize: 4,
-  hourLeftColor: "red",
-  hourRightColor: "green",
-  minuteLeftColor: "blue",
-  minuteRightColor: "red"
+  pixelSize: 64,
+  hourLeftColor: "#ff0000",// red
+  hourRightColor: "#008000",// green
+  minuteLeftColor: "#0000ff", // blue
+  minuteRightColor: "#ff0000" // red
 };
+
+function createPattern(size: number, digit: number): boolean[] {
+  const pattern = new Array<boolean>(size).fill(false).fill(true, 0, digit);
+  if (digit == 0 || digit == size) { return pattern; }
+  shuffleArray(pattern);
+  return pattern;
+}
 
 // Durstenfeld shuffle
 // https://stackoverflow.com/a/12646864
@@ -18,19 +25,14 @@ function shuffleArray<T>(array: Array<T>) {
   }
 }
 
-function createPattern(max: number, digit: number): boolean[] {
-  const pattern = new Array<boolean>(max).fill(false).fill(true, 0, digit);
-  if (digit == 0 || digit == max) { return pattern; }
-  shuffleArray(pattern);
-  return pattern;
-}
-
 export default defineNuxtPlugin(() => {
-  const interval = useState("interval", () => def.updateInterval);
-  const hourL = useState<BlockState>();
-  const hourR = useState<BlockState>();
-  const minuteL = useState<BlockState>();
-  const minuteR = useState<BlockState>();
+  let config: Config = defaultConfig;
+  const interval = useState("interval", () => config.updateInterval);
+  const pixelSize = useState("pixelSize", () => config.pixelSize);
+  const hourL = useState<BlockState>("hourL");
+  const hourR = useState<BlockState>("hourR");
+  const minuteL = useState<BlockState>("minuteL");
+  const minuteR = useState<BlockState>("minuteR");
 
   function updateState() {
     const now = new Date();
@@ -44,22 +46,22 @@ export default defineNuxtPlugin(() => {
 
     hourL.value = {
       pattern: createPattern(3, hl),
-      color: def.hourLeftColor,
+      color: config.hourLeftColor,
       digit: hl
     };
     hourR.value = {
       pattern: createPattern(9, hr),
-      color: def.hourRightColor,
+      color: config.hourRightColor,
       digit: hr
     };
     minuteL.value = {
       pattern: createPattern(6, ml),
-      color: def.minuteLeftColor,
+      color: config.minuteLeftColor,
       digit: ml
     };
     minuteR.value = {
       pattern: createPattern(9, mr),
-      color: def.minuteRightColor,
+      color: config.minuteRightColor,
       digit: mr
     };
   }
@@ -69,6 +71,37 @@ export default defineNuxtPlugin(() => {
       await sleep(interval.value);
       updateState();
     }
+  }
+
+  /**
+   * Get default config
+   * @returns copy of default config
+   */
+  function getDefaultConfig() {
+    return { ...defaultConfig };
+  }
+
+  /**
+   * Get current config
+   * @returns copy of current config
+   */
+  function getConfig() {
+    return { ...config };
+  }
+
+  /**
+   * Set current config
+   * @param {Config} newConfig new config
+   */
+  function setConfig(newConfig: Config) {
+    config = newConfig;
+    interval.value = config.updateInterval;
+    pixelSize.value = config.pixelSize;
+    updateState();
+  }
+
+  function resetConfig() {
+    setConfig(defaultConfig);
   }
 
   updateState();
@@ -81,7 +114,11 @@ export default defineNuxtPlugin(() => {
         hourR,
         minuteL,
         minuteR,
-        pixelSize: def.pixelSize
+        pixelSize,
+        getDefaultConfig,
+        resetConfig,
+        getConfig,
+        setConfig
       }
     }
   };

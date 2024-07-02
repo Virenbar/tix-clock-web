@@ -13,10 +13,12 @@ export default function () {
 
   return {
     getItem,
-    setItem
+    setItem,
+    setConfig: (config: Config) => setItem("config", config),
+    getConfig: () => getItem("config")
   };
 }
 
 interface Storage {
-  settings: Settings
+  config: Config
 }
