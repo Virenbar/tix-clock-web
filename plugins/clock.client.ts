@@ -94,7 +94,7 @@ export default defineNuxtPlugin(() => {
    * @param {Config} newConfig new config
    */
   function setConfig(newConfig: Config) {
-    config = newConfig;
+    config = { ...config, ...newConfig };
     interval.value = config.updateInterval;
     pixelSize.value = config.pixelSize;
     updateState();
