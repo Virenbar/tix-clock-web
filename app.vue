@@ -1,30 +1,25 @@
 <script setup lang="ts">
-const title = "TIX Clock";
-const description = "Web version of TIX Clock";
-
+const title = 'TIX Clock';
+const description = 'Web version of TIX Clock';
+const logo = 'https://virenbar.ru/tix-clock-web/favicon/android-chrome-192x192.png';
 useHead({
   title,
-  meta: [
-    { name: "description", content: description }
-  ],
-  htmlAttrs: {
-    "data-bs-theme": "dark",
-    lang: "en"
-  }
+  meta: [{ name: 'description', content: description }],
+  htmlAttrs: { 'data-bs-theme': 'dark', 'lang': 'en' },
 });
-useServerSeoMeta({
-  title,
+useSeoMeta({
   description,
-  ogType: "website",
-  ogTitle: title,
   ogDescription: description,
-  ogImage: "",
+  ogImage: logo,
+  ogImageSecureUrl: logo,
   ogSiteName: title,
-  ogUrl: "https://virenbar.ru/tix-clock-web/",
-  twitterTitle: "[twitter:title]",
-  twitterDescription: "[twitter:description]",
-  twitterImage: "[twitter:image]",
-  twitterCard: "summary"
+  ogTitle: title,
+  ogType: 'website',
+  ogUrl: 'https://virenbar.ru/tix-clock-web/',
+  twitterCard: 'summary',
+  twitterDescription: description,
+  twitterImage: logo,
+  twitterTitle: title,
 });
 </script>
 <template>

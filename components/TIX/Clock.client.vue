@@ -13,7 +13,7 @@ async function updateStyle() {
 watch([size], updateStyle);
 onMounted(async () => {
   const config = getConfig();
-  if (config) { setConfig(config); }
+  if (config) setConfig(config);
   await nextTick();
   updateStyle();
 });
@@ -23,15 +23,15 @@ onUpdated(updateStyle);
   <div class="m-auto">
     <div ref="HBlock" class="d-inline-block">
       <TIXBlock :class="{ 'd-none': !vertical }" />
-      <TIXBlock :size=1 :state="hourL" />
+      <TIXBlock :size="1" :state="hourL" />
       <TIXBlock />
-      <TIXBlock :size=3 :state="hourR" />
+      <TIXBlock :size="3" :state="hourR" />
       <TIXBlock :class="{ 'd-none': vertical }" />
     </div>
     <div ref="MBlock" class="d-inline-block">
-      <TIXBlock :size=2 :state="minuteL" />
+      <TIXBlock :size="2" :state="minuteL" />
       <TIXBlock />
-      <TIXBlock :size=3 :state="minuteR" />
+      <TIXBlock :size="3" :state="minuteR" />
     </div>
   </div>
 </template>

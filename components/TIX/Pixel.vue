@@ -1,8 +1,8 @@
 <script setup lang="ts">
 defineProps({
-  colorOff: { type: String, default: "black" },
-  colorOn: { type: String, default: "green" },
-  lit: { type: Boolean }
+  colorOff: { type: String, default: 'black' },
+  colorOn: { type: String, default: 'green' },
+  lit: { type: Boolean },
 });
 </script>
 <template>

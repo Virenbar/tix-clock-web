@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<Props>();
-const handleError = () => clearError({ redirect: "/" });
+const handleError = () => clearError({ redirect: '/' });
 
 interface Props {
   error: unknown

@@ -2,7 +2,7 @@ export default function () {
   function getItem<K extends keyof Storage>(key: K): Storage[K] | null {
     const storage = window.localStorage;
     const value = storage.getItem(key);
-    if (!value) { return null; }
+    if (!value) return null;
     return JSON.parse(value) as Storage[K];
   }
 
@@ -14,8 +14,8 @@ export default function () {
   return {
     getItem,
     setItem,
-    setConfig: (config: Config) => setItem("config", config),
-    getConfig: () => getItem("config")
+    setConfig: (config: Config) => setItem('config', config),
+    getConfig: () => getItem('config'),
   };
 }
 

@@ -3,7 +3,7 @@ export default function (element: HTMLElement | undefined = undefined) {
     screenWidth: 0,
     screenHeight: 0,
     ratioWH: 0,
-    ratioHW: 0
+    ratioHW: 0,
   }));
 
   function onResize() {
@@ -11,7 +11,7 @@ export default function (element: HTMLElement | undefined = undefined) {
       screenWidth: window.innerWidth,
       screenHeight: window.innerHeight,
       ratioWH: window.innerWidth / window.innerHeight,
-      ratioHW: window.innerHeight / window.innerWidth
+      ratioHW: window.innerHeight / window.innerWidth,
     };
     if (element) {
       const clientRect = element.getBoundingClientRect();
@@ -28,12 +28,12 @@ export default function (element: HTMLElement | undefined = undefined) {
   };
 
   onMounted(() => {
-    window.addEventListener("resize", onResize, false);
+    window.addEventListener('resize', onResize, false);
     onResize();
   });
 
   onUnmounted(() => {
-    window.removeEventListener("resize", onResize, false);
+    window.removeEventListener('resize', onResize, false);
   });
 
   return state;

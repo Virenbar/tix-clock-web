@@ -5,8 +5,8 @@ interface Props {
   state?: BlockState
 }
 const size = props.size || 1;
-const colorOff = "black";
-const index = (row: number, col: number) => (row - 1) * size + col - 1; 
+const colorOff = 'black';
+const index = (row: number, col: number) => (row - 1) * size + col - 1;
 </script>
 <template>
   <div class="d-inline-block">
