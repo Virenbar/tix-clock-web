@@ -3,8 +3,7 @@ const HBlock = ref<HTMLElement>();
 const MBlock = ref<HTMLElement>();
 const vertical = ref(false);
 
-const { hourL, hourR, minuteL, minuteR, setConfig } = useClock();
-const { getConfig } = useLocalStorage();
+const { hourL, hourR, minuteL, minuteR } = useClock();
 const size = useResize();
 
 async function updateStyle() {
@@ -12,8 +11,6 @@ async function updateStyle() {
 }
 watch([size], updateStyle);
 onMounted(async () => {
-  const config = getConfig();
-  if (config) setConfig(config);
   await nextTick();
   updateStyle();
 });

@@ -2,11 +2,28 @@
 const clock = useClock();
 const storage = useLocalStorage();
 const config = ref({ ...clock.getConfig(), ...storage.getConfig() });
+const { setParameter, getParameter } = useParams();
+
+onMounted(() => {
+  clock.setConfig(config.value);
+  // Override config with params
+  const param = getParameter('config');
+  if (!param) return;
+  const override = JSON.parse(param);
+  console.log(override);
+  config.value = override;
+  clock.setConfig(config.value);
+});
 
 function save() {
   clock.setConfig(config.value);
-  useLocalStorage().setConfig(clock.getConfig());
+  storage.setConfig(clock.getConfig());
   console.log(config.value);
+}
+
+function share() {
+  setParameter('config', JSON.stringify(config.value));
+  // navigator.clipboard.writeText(location.href);
 }
 
 function reset() {
@@ -53,6 +70,9 @@ function reset() {
     <div>
       <button class="btn btn-outline-warning" @click="reset">
         Reset
+      </button>
+      <button class="btn btn-outline-info mx-1" @click="share">
+        Share
       </button>
       <button class="btn btn-success float-end" @click="save">
         Save
