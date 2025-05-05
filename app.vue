@@ -21,6 +21,7 @@ useSeoMeta({
   twitterImage: logo,
   twitterTitle: title,
 });
+useWakeLock();
 </script>
 <template>
   <PageFavicon />
