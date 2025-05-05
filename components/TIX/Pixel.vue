@@ -1,9 +1,11 @@
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   colorOff: { type: String, default: 'black' },
   colorOn: { type: String, default: 'green' },
   lit: { type: Boolean },
 });
+const inner = computed(() => color_mix(props.colorOn, props.colorOff, 0.60));
+const outer = computed(() => color_mix(props.colorOn, props.colorOff, 0.40));
 </script>
 <template>
   <div class="pixel" :class="{ glow: lit }" />
@@ -19,11 +21,14 @@ defineProps({
 }
 
 .glow {
-  /* box-shadow: 0 0 8px 2px v-bind(color); */
-  /* box-shadow: inset 0 0 40px #000; */
+  box-shadow: inset 0 0 12px 3px v-bind(inner), 0 0 12px 3px v-bind(outer);
+  background-color: v-bind(colorOn);
+}
+
+/* .glow {
   box-shadow:
     inset 0 0 12px 3px color-mix(in srgb, v-bind(colorOn) 40%, v-bind(colorOff) 60%),
     0 0 12px 3px color-mix(in srgb, v-bind(colorOn) 60%, v-bind(colorOff) 40%);
   background-color: v-bind(colorOn);
-}
+} */
 </style>

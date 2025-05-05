@@ -28,6 +28,16 @@ export default defineNuxtConfig({
       date: date,
     },
   },
+  // Silencing the deprecation warnings
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          silenceDeprecations: ['mixed-decls', 'color-functions', 'global-builtin', 'import'],
+        },
+      },
+    },
+  },
   eslint: {
     config: {
       stylistic: true,
