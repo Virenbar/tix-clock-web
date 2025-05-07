@@ -1,5 +1,15 @@
 # TIX Clock [![Build artifact][build-src]][build-href] <!-- [![Netlify Status][netlify-src]][netlify-href] -->
 
+Web version of TIX Clock
+
+## Development
+
+Add to `.env` file
+
+```config
+NUXT_APP_BASE_URL = /tix-clock-web/
+```
+
 <!-- Badges -->
 [build-src]: https://img.shields.io/github/actions/workflow/status/Virenbar/tix-clock-web/build.yml?label=Build&logo=github
 [build-href]: https://github.com/Virenbar/tix-clock-web/actions/workflows/build.yml
