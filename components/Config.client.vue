@@ -33,7 +33,7 @@ function reset() {
 <template>
   <div class="settings m-1">
     <div class="input-group mb-1">
-      <div class="input-group-text text-center" style="text-align: center;">
+      <div class="input-group-text">
         Hour L
       </div>
       <input v-model="config.hourLeftColor" type="color" class="form-control form-control-color">
@@ -81,26 +81,9 @@ function reset() {
   </div>
 </template>
 <style scoped>
-/* label {
-  display: flex;
-  align-items: center;
-} */
-.settings {
-  max-width: 500px;
-}
-
 .input-group-text {
   /* min-width: 120px; */
   text-align: center;
   display: inline-block;
-}
-
-.color-picker {
-  margin-right: 10px;
-  width: 26px;
-  height: 30px;
-  padding: 0;
-  border: none;
-  background: transparent;
 }
 </style>

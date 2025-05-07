@@ -20,10 +20,11 @@
 </template>
 <style scoped>
 .offcanvas {
-  min-height: 250px;
+  height: max-content;
 }
 
 .offcanvas>div {
+  padding: 5px;
   width: 500px;
   margin: auto;
 }

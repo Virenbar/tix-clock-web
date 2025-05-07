@@ -10,13 +10,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@artmizu/yandex-metrika-nuxt',
   ],
-  app: {
-    head: {
-      script: [
-        { src: 'https://kit.fontawesome.com/3d652cc361.js', crossorigin: 'anonymous' },
-      ],
-    },
-  },
   css: [
     '@/assets/css/styles.scss',
   ],

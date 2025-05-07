@@ -27,7 +27,6 @@ function shuffleArray<T>(array: Array<T>) {
 
 export default defineNuxtPlugin(() => {
   let config: Config = defaultConfig;
-  const interval = useState('interval', () => config.updateInterval);
   const pixelSize = useState('pixelSize', () => config.pixelSize);
   const hourL = useState<BlockState>('hourL');
   const hourR = useState<BlockState>('hourR');
@@ -68,7 +67,7 @@ export default defineNuxtPlugin(() => {
 
   async function loop() {
     for (; ;) {
-      await sleep(interval.value);
+      await sleep(config.updateInterval);
       updateState();
     }
   }
@@ -95,7 +94,6 @@ export default defineNuxtPlugin(() => {
    */
   function setConfig(newConfig: Config) {
     config = { ...config, ...newConfig };
-    interval.value = config.updateInterval;
     pixelSize.value = config.pixelSize;
     updateState();
   }
