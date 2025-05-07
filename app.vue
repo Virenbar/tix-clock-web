@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const title = 'TIX Clock';
 const description = 'Web version of TIX Clock';
-const logo = 'https://virenbar.ru/tix-clock-web/favicon/android-chrome-192x192.png';
+const logo = useBaseURL('/favicon/android-chrome-192x192.png');
 useHead({
   title,
   meta: [{ name: 'description', content: description }],
@@ -29,7 +29,7 @@ useWakeLock();
     <main id="main" class="flex-grow-1 flex-shrink-0">
       <NuxtPage />
     </main>
-    <!-- <PageFooter /> -->
+    <PageFooter />
   </div>
 </template>
 <style lang="scss">

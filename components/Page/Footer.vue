@@ -6,16 +6,12 @@ const tree = hash.substring(0, 7);
 const treeURL = `${repository}/tree/${hash}`;
 </script>
 <template>
-  <footer class="container-fluid py-1 px-3 bg-body-secondary d-flex justify-content-between">
+  <footer class="container-fluid px-3 d-flex justify-content-between">
     <div>
       Made with
-      <NuxtLink target="_blank" to="https://nuxt.com/">
-        <i class="fa-solid fa-mountain" /> Nuxt
-      </NuxtLink>
+      <NuxtLink target="_blank" to="https://nuxt.com/">Nuxt</NuxtLink>
       and
-      <NuxtLink target="_blank" to="https://pages.github.com/">
-        <i class="fa-brands fa-github" /> GitHub Pages
-      </NuxtLink>
+      <NuxtLink target="_blank" to="https://pages.github.com/">GitHub Pages</NuxtLink>
     </div>
 
     <div class="d-none d-md-block">
@@ -28,3 +24,13 @@ const treeURL = `${repository}/tree/${hash}`;
     </div>
   </footer>
 </template>
+<style scoped lang="scss">
+footer>div {
+  transition: all .5s;
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+</style>
