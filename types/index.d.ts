@@ -11,4 +11,6 @@ interface Config {
   hourRightColor: string
   minuteLeftColor: string
   minuteRightColor: string
+  backgroundColor: string
+  offColor: string
 }

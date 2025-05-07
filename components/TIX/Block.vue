@@ -6,10 +6,10 @@ interface Props {
 }
 const size = props.size || 1;
 const index = (row: number, col: number) => (row - 1) * size + col - 1;
-const colorOff = 'black';
+const colorOff = useClock().offColor;
 const colorOn = computed(() => props.state?.color || 'green');
-const inner = computed(() => color_mix(colorOn.value, colorOff, 0.60));
-const outer = computed(() => color_mix(colorOn.value, colorOff, 0.40));
+const inner = computed(() => color_mix(colorOn.value, colorOff.value, 0.60));
+const outer = computed(() => color_mix(colorOn.value, colorOff.value, 0.40));
 </script>
 <template>
   <div class="d-inline-block">

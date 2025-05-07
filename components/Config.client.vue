@@ -52,6 +52,16 @@ function reset() {
     </div>
 
     <div class="input-group mb-1">
+      <div class="input-group-text">
+        Background Color
+      </div>
+      <input v-model="config.backgroundColor" type="color" class="form-control form-control-color">
+      <span class="input-group-text">
+        Off Color </span>
+      <input v-model="config.offColor" type="color" class="form-control form-control-color">
+    </div>
+
+    <div class="input-group mb-1">
       <span class="input-group-text">
         Update interval
       </span>

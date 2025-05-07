@@ -7,6 +7,8 @@ const defaultConfig: Config = {
   hourRightColor: '#008000', // green
   minuteLeftColor: '#0000ff', // blue
   minuteRightColor: '#ff0000', // red
+  backgroundColor: '#000',
+  offColor: '#0A0A0A',
 };
 
 function createPattern(size: number, digit: number): boolean[] {
@@ -28,6 +30,8 @@ function shuffleArray<T>(array: Array<T>) {
 export default defineNuxtPlugin(() => {
   let config: Config = defaultConfig;
   const pixelSize = useState('pixelSize', () => config.pixelSize);
+  const backgroundColor = useState('backgroundColor', () => config.backgroundColor);
+  const offColor = useState('offColor', () => config.offColor);
   const hourL = useState<BlockState>('hourL');
   const hourR = useState<BlockState>('hourR');
   const minuteL = useState<BlockState>('minuteL');
@@ -95,6 +99,8 @@ export default defineNuxtPlugin(() => {
   function setConfig(newConfig: Config) {
     config = { ...config, ...newConfig };
     pixelSize.value = config.pixelSize;
+    offColor.value = config.offColor;
+    backgroundColor.value = config.backgroundColor;
     updateState();
   }
 
@@ -113,6 +119,8 @@ export default defineNuxtPlugin(() => {
         minuteL,
         minuteR,
         pixelSize,
+        backgroundColor,
+        offColor,
         getDefaultConfig,
         resetConfig,
         getConfig,

@@ -2,6 +2,11 @@
 
 Web version of TIX Clock
 
+## Usage on TV
+
+1. Setup config on PC and press `Share` to generate URL with config.
+1. Transfer URL to TV using URL shortener or bookmarks.
+
 ## Development
 
 Add to `.env` file

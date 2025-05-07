@@ -32,6 +32,9 @@ useWakeLock();
     <PageFooter />
   </div>
 </template>
-<style lang="scss">
-@use "~/assets/css/styles.scss";
+<style>
+main,
+footer {
+  background-color: v-bind("$clock.backgroundColor.value");
+}
 </style>
